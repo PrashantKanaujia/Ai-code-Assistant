@@ -1,0 +1,33 @@
+.answer-panel{
+
+    margin-top:30px;
+
+    padding:24px;
+
+    background:#1b1b1d;
+
+    border-radius:12px;
+
+    border:1px solid #333;
+}
+
+.answer-panel h2{
+
+    margin-bottom:20px;
+
+    color:white;
+}
+
+.placeholder{
+
+    color:#9b9b9b;
+}
+
+.answer-content{
+
+    color:white;
+
+    line-height:1.8;
+
+    white-space:pre-wrap;
+}

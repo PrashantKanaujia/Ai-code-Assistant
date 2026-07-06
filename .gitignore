@@ -1,1 +1,6 @@
 .env
+repository.db
+chroma.sqlite3
+vector_db
+test_scanner.py
+repositories

@@ -1,0 +1,17 @@
+.home{
+
+    display:flex;
+
+    height:100vh;
+
+    background:#111214;
+}
+
+.main{
+
+    flex:1;
+
+    padding:40px;
+
+    overflow:auto;
+}

@@ -1,0 +1,31 @@
+:root {
+
+    /* Colors */
+
+    --background: #0f172a;
+    --surface: #1e293b;
+
+    --primary: #3b82f6;
+    --secondary: #64748b;
+
+    --text: #ffffff;
+    --muted-text: #94a3b8;
+
+    --border: #334155;
+
+    /* Radius */
+
+    --radius-small: 6px;
+    --radius-medium: 10px;
+    --radius-large: 16px;
+
+    /* Spacing */
+
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+
+    /* Font */
+
+    --font-family: Inter, sans-serif;
+}
