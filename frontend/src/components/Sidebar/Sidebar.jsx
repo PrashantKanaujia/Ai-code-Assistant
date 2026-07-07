@@ -6,30 +6,44 @@ import { getProjects } from "../../services/projectService";
 import { getRepositoryFiles } from "../../services/repositoryService";
 
 import AddRepositoryModal from "../AddRepositoryModal/AddRepositoryModal";
+import FileTree from "../FileTree/FileTree";
 
-function Sidebar({ selectedProject, onSelectProject }) {
+function Sidebar({
+
+    selectedProject,
+    onSelectProject,
+    onFileClick
+
+}) {
 
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [files, setFiles] = useState([]);
+    const [repositoryOpen, setRepositoryOpen] = useState(true);
 
     async function selectProject(project) {
 
+    if (selectedProject?.id === project.id) {
+
+        setRepositoryOpen(prev => !prev);
+        return;
+
+    }
+
     onSelectProject(project);
+    setRepositoryOpen(true);
 
     try {
 
-        const repositoryFiles = await getRepositoryFiles(
-            project.id
-        );
+        const repositoryFiles = await getRepositoryFiles(project.id);
 
         setFiles(repositoryFiles);
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(error);
 
@@ -96,24 +110,22 @@ function Sidebar({ selectedProject, onSelectProject }) {
                             }
                             onClick={() => selectProject(project)}
                         >
-                            {project.name}
-                            <div className="file-list">
 
-                            {
-                                files.map((file,index)=>(
-
-                                    <div key={index}>
-                                        {file.path}
-                                    </div>
-
-                                ))
-                            }
-
-                            </div>
+                            {/* {project.name} */}
+                            <>
+                                {selectedProject?.id === project.id && repositoryOpen ? "▼ " : "▶ "}
+                                {project.name}
+                            </>
                         </button>
 
                     ))}
 
+                    {selectedProject && repositoryOpen && (
+                        <FileTree
+                            files={files}
+                            onFileClick={onFileClick}
+                        />
+                    )}
                 </div>
 
             )}

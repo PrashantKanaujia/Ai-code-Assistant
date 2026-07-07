@@ -4,3 +4,5 @@ chroma.sqlite3
 vector_db
 test_scanner.py
 repositories
+test_gemini.py
+.venv

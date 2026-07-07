@@ -1,0 +1,50 @@
+.file-tree {
+
+    padding: 8px 5px;
+
+    overflow-y: auto;
+
+}
+
+
+.folder-item,
+.file-item {
+
+    display: flex;
+
+    align-items: center;
+
+    height: 28px;
+
+    padding-left: 8px;
+
+    color: #c5c5c5;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    border-radius: 4px;
+
+}
+
+
+.folder-item:hover,
+.file-item:hover {
+
+    background: #2a2d2e;
+
+    color: white;
+
+}
+
+
+.children {
+
+    margin-left: 16px;
+
+    border-left: 1px solid #333;
+
+    padding-left: 8px;
+
+}

@@ -15,19 +15,21 @@ function Home() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [answer, setAnswer] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [selectedSource, setSelectedSource] = useState(null);
-   
-    async function openFile(source) {
+    const [highlight, setHighlight] = useState(null);
+
+    
+    async function openFile(fileInfo, highlight = null) {
 
         try {
 
             const file = await getFile(
                 selectedProject.id,
-                source.file_path
+                fileInfo.file_path
             );
 
             setSelectedFile(file);
-            setSelectedSource(source);
+            setHighlight(highlight);
+
 
         }
 
@@ -43,8 +45,13 @@ function Home() {
         <div className="home">
 
             <Sidebar
+
                 selectedProject={selectedProject}
+
                 onSelectProject={setSelectedProject}
+
+                onFileClick={openFile}
+
             />
 
             <main className="main">
@@ -67,13 +74,13 @@ function Home() {
 
             <FileViewer
                 file={selectedFile}
-                source={selectedSource}
+                highlight={highlight}
                 onClose={() => {
 
-                    setSelectedFile(null);
-                    setSelectedSource(null);
+                setSelectedFile(null);
+                setHighlight(null);
 
-                }}
+}}
             />
 
         </div>

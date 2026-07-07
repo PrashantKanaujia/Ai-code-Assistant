@@ -27,7 +27,7 @@ function SourcesPanel({
                         <div
                             key={index}
                             className="source-card"
-                            onClick={() => onOpenFile(source)}
+                            onClick={() => onOpenFile(source, source)}
                         >
 
                             <h4>{source.file_path}</h4>

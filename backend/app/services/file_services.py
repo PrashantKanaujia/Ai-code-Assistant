@@ -3,6 +3,7 @@ from pathlib import Path
 from sqlalchemy.orm import Session
 
 from app.models.project import Project
+from app.services.repository_indexer import RepositoryIndexer
 
 
 class FileService:
@@ -33,7 +34,11 @@ class FileService:
             errors="ignore"
         )
 
+        language = RepositoryIndexer().detect_language(absolute_file_path)
+
         return {
             "file_name": absolute_file_path.name,
+            "file_path": file_path,
+            "language": language,
             "content": content
         }
