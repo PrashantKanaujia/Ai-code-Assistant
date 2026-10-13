@@ -9,7 +9,7 @@ services:
     healthCheckPath: /docs
     envVars:
       - key: PYTHON_VERSION
-        value: 3.12.8
+        value: "3.12.8"
       - key: PYTHONUNBUFFERED
         value: "1"
       - key: GEMINI_API_KEY
@@ -17,7 +17,10 @@ services:
       - key: DATABASE_URL
         sync: false
       - key: FRONTEND_ORIGIN
-        sync: false
+        fromService:
+          type: web
+          name: ai-code-assistant-frontend
+          property: host
 
   - type: web
     name: ai-code-assistant-frontend
@@ -27,7 +30,10 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_API_BASE_URL
-        sync: false
+        fromService:
+          type: web
+          name: ai-code-assistant-api
+          property: host
     routes:
       - type: rewrite
         source: /*
